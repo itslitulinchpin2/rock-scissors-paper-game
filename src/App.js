@@ -28,20 +28,38 @@ const choice = {
   }
 }
 
+const [userSelect,setUserSelect]=useState(null);
+const [computerSelect,setComputerSelect]=useState(null);
+
 const play = (userChoice)=>{
   console.log(userChoice)
   setUserSelect(choice[userChoice])
+  let computerChoice = randomChoice();
+  setComputerSelect(choice[computerChoice])
 }
-const [userSelect,setUserSelect]=useState(null);
 
+const randomChoice = () => {
+  
+  let itemArray=Object.keys(choice)
+  //itemArray=[rock,scissors,paper]
+  //객체들의 키값만 뽑아 배열로 만들어준다.
 
-
+  //컴퓨터에서 랜덤으로 값을 가져오는 방법?
+  //Math.random()
+  //0~1 사이의 값을 랜덤으로 반환한다.
+  //Math.floor함수는 소숫점 이하를 버리고 정수만 남긴다.
+  //randomItem은 결국 배열의 인덱스로 쓸 값임. 0에서 2 사이의 랜덤 정수값.
+  let randomItem = Math.floor(Math.random()*itemArray.length)
+  
+  let final = itemArray[randomItem]
+  return final;
+}
 
   return (
   <div>
     <div className="main">
       <Box user="You" item={userSelect}></Box>
-      <Box user="Computer" item={userSelect}></Box>
+      <Box user="Computer" item={computerSelect}></Box>
     </div>
     <div className="main">
       <button onClick={()=>play("scissors")}>가위</button>
