@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Box from './component/box'
 import {useState} from 'react';
 
 
@@ -15,8 +16,16 @@ function App() {
 
   
   return (
-    <div>
-     
+  <div>
+    <div className="main">
+      <Box user="You"></Box>
+      <Box user="Computer"></Box>
+    </div>
+    <div className="main">
+      <button>가위</button>
+      <button>바위</button>
+      <button>보</button>
+    </div>
     </div>
   );
 }
